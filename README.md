@@ -1,3 +1,3 @@
 ## Elevator System Architecture
 
-![Elevator System Diagram](docs/elevator-1.drawio.png)
+![Elevator System Diagram](./docs/elevator-1.drawio.png)
