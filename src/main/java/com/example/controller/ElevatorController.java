@@ -40,18 +40,18 @@ public class ElevatorController {
         int current = elevator.getCurrentFloor();
         Directions moving = elevator.getDirection();
 
-        // Elevator IDLE → respect user direction
+        // Elevator IDLE → derive direction
         if (moving == Directions.IDLE) {
-            if (direction == Directions.UP) {
+            if (floor > current) {
                 upQueue.offer(floor);
-            } else {
+            } else if (floor < current) {
                 downQueue.offer(floor);
             }
         }
 
         // Elevator moving UP
         else if (moving == Directions.UP) {
-            if (direction == Directions.UP && floor >= current) {
+            if (floor >= current) {
                 upQueue.offer(floor);
             } else {
                 pendingQueue.offer(floor);
@@ -60,7 +60,7 @@ public class ElevatorController {
 
         // Elevator moving DOWN
         else {
-            if (direction == Directions.DOWN && floor <= current) {
+            if (floor <= current) {
                 downQueue.offer(floor);
             } else {
                 pendingQueue.offer(floor);
